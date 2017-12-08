@@ -55,7 +55,7 @@ def main():
 
     """ Plotgraph of continents """
     files = ["dataset/continents/"+filename.strip("\n\r") for filename in open("dataset/continents/file.txt")]
-    list_continent = ['africa', 'america', 'east asia', 'europe', 'middle east', 'oceania', 'south asia']
+    list_continent = ['Africa', 'America', 'East asia', 'Europe', 'Middle east', 'Oceania', 'South asia']
     y_title='จำนวนนักท่องเที่ยว(คน)'
     x_title='ปีพ.ศ.'
     start_year, end_year = 2550, 2560
