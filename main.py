@@ -14,14 +14,15 @@ def csv_to_dataframe(filename):
     return dataframe
 
 
-def plotgraph(data, name, chart_title, graph_type, x_axis_title, y_axis_title):
+def plotgraph(dataframe, name, chart_title, graph_type, x_axis_title, y_axis_title):
     """
         ::: Plotgrap Function :::
             plot graph from dataframe to *.svg file
         Parameter
             data = dataframe in format
                  ------------------------------------------------------
-                | data_index |    2550     |    ....     |    2559     |
+                | data_index |     2550    |    ....     |     2559    |
+                |------------|-------------|-------------|-------------|
                 |  some_text | <int,float> |    ....     | <int,float> |
                 |    ....    |    ....     |    ....     |    ....     |
                 |  some_text | <int,float> | <int,float> | <int,float> |
@@ -30,7 +31,6 @@ def plotgraph(data, name, chart_title, graph_type, x_axis_title, y_axis_title):
             chart_title = title of that chart
             graph_type = type of plot include line, bar, pie
     """
-    dataframe = data
     year_list = dataframe.loc[0].index.values[1:].tolist()
     country = dataframe[dataframe.columns[0]]
     # checking type of graph
@@ -43,7 +43,7 @@ def plotgraph(data, name, chart_title, graph_type, x_axis_title, y_axis_title):
     #Set Chart Title
     chart.title = chart_title
     #Set X axis
-    chart.x_labels = map(str, year_list)
+    chart.x_labels = year_list
     for i in range(len(dataframe)):
         chart.add(str(country[i]).strip() , dataframe.loc[i][1:].astype(float))
     chart.render_to_file("chart/"+name+".svg")
@@ -93,8 +93,4 @@ def main():
         if i == 5:
             y_title='จำนวนเงิน(ล้านบาท)'
         plotgraph(dataframe, name, title, "bar", x_title, y_title)
-    # data = pd.DataFrame(continent_values, index = list_year)
-    # print(data.head())
-    # tourist_per_year = data.transpose().sum().transpose()
-    # print(tourist_per_year)
 main()
