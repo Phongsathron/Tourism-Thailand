@@ -32,7 +32,7 @@ def plotgraph(dataframe, name, chart_title, graph_type, x_axis_title, y_axis_tit
             graph_type = type of plot include line, bar, pie
     """
     year_list = dataframe.loc[0].index.values[1:].tolist()
-    country = dataframe[dataframe.columns[0]]
+    col_item = dataframe[dataframe.columns[0]]
     # checking type of graph
     if graph_type == "line":
         chart = pygal.Line(x_title=x_axis_title, y_title=y_axis_title)
@@ -45,7 +45,7 @@ def plotgraph(dataframe, name, chart_title, graph_type, x_axis_title, y_axis_tit
     #Set X axis
     chart.x_labels = year_list
     for i in range(len(dataframe)):
-        chart.add(str(country[i]).strip() , dataframe.loc[i][1:].astype(float))
+        chart.add(str(col_item[i]).strip() , dataframe.loc[i][1:].astype(float))
     chart.render_to_file("chart/"+name+".svg")
 
 def main():
