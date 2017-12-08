@@ -27,7 +27,7 @@ def plotgraph(data, name, chart_title, graph_type, x_axis_title, y_axis_title):
                 |  some_text | <int,float> |    ....     | <int,float> |
                 |    ....    |    ....     |    ....     |    ....     |
                 |  some_text | <int,float> | <int,float> | <int,float> |
-                 ---------------------------------------------------
+                 ------------------------------------------------------
             name = name of export svg ex. europe.svg
             chart_title = title of that chart
             graph_type = type of plot include line, bar, pie
@@ -39,7 +39,7 @@ def plotgraph(data, name, chart_title, graph_type, x_axis_title, y_axis_title):
     if graph_type == "line":
         chart = pygal.Line(x_title=x_axis_title, y_title=y_axis_title)
     elif graph_type == "bar":
-        chart = pygal.Bar()
+        chart = pygal.Bar(x_title=x_axis_title, y_title=y_axis_title)
     elif graph_type == "pie":
         chart == pygal.Pie()
     #Set Chart Title
@@ -94,7 +94,7 @@ def main():
             y_title='จำนวนเงิน(บาท)'
         if i == 5:
             y_title='จำนวนเงิน(ล้านบาท)'
-        plotgraph(dataframe, name, title, "bar",x_title, y_title)
+        plotgraph(dataframe, name, title, "bar", x_title, y_title)
     # data = pd.DataFrame(continent_values, index = list_year)
     # print(data.head())
     # tourist_per_year = data.transpose().sum().transpose()
