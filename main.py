@@ -2,8 +2,6 @@
     Plot graph from dataset
 """
 import pandas as pd
-from pandas import ExcelWriter
-from pandas import ExcelFile
 import pygal
 
 def csv_to_dataframe(filename):
