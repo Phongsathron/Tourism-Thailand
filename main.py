@@ -21,11 +21,11 @@ def plotgraph(dataframe, name, chart_title, graph_type, x_axis_title, y_axis_tit
         Parameter
             data = dataframe in format
                  ------------------------------------------------------
-                | data_index |     2550    |    ....     |     2559    |
+                | data_index |     2550    |     ....    |     2559    |
                 |------------|-------------|-------------|-------------|
-                |  some_text | <int,float> |    ....     | <int,float> |
-                |    ....    |    ....     |    ....     |    ....     |
-                |  some_text | <int,float> | <int,float> | <int,float> |
+                |  some_text | <int,float> |     ....    | <int,float> |
+                |    ....    |    ....     |     ....    |    ....     |
+                |  some_text | <int,float> |     ....    | <int,float> |
                  ------------------------------------------------------
             name = name of export svg ex. europe.svg
             chart_title = title of that chart
@@ -81,16 +81,21 @@ def main():
 
     """ Plotgraph tourist info """
     files = [filename.strip("\n\r") for filename in open("dataset/tourist_info/file.txt")]
+    title_list = ['สถิตินักท่องเที่ยวจำแนกตามช่วงอายุของเดินทางเข้าประเทศไทยในปี 2550-2559', \
+                  'สถิตินักท่องเที่ยวจำแนกตามเพศที่เดินทางเข้าประเทศไทยในปี 2550-2559', \
+                  'สถิตินักท่องเที่ยวจำแนกตามจำนวนครั้งการเดินทางเข้าประเทศไทยในปี 2550-2559', \
+                  'สถิตินักท่องเที่ยวจำแนกตามประเภทของการเดินทางในปี 2550-2559', \
+                  'สถิติรายได้จากการท่องเที่ยวเฉลี่ยต่อคนในหนึ่งวันในปี 2550-2559', \
+                  'สถิติรายได้จากการท่องเที่ยวในแต่ละปีตั้งแต่ 2550-2559']
     for i in range(len(files)):
         file_name = files[i]
         dataframe = csv_to_dataframe("dataset/tourist_info/"+file_name)
         name = file_name[:file_name.find(".")]
-        title = 'Statistics about '+ name + " to Thailand in 2550 - 2559."
         y_title='จำนวนนักท่องเที่ยว(คน)'
         x_title='ปีพ.ศ.'
         if i == 4:
             y_title='จำนวนเงิน(บาท)'
         if i == 5:
             y_title='จำนวนเงิน(ล้านบาท)'
-        plotgraph(dataframe, name, title, "bar", x_title, y_title)
+        plotgraph(dataframe, name, title_list[i], "bar", x_title, y_title)
 main()
