@@ -1,0 +1,44 @@
+body{
+    /* font-family: 'Pridi', serif; */
+    background: #FFFFFF;
+    font-size: 15px;
+}
+
+.header{
+    background-image: url(../pexels-photo-415708.jpeg);
+    background-size: cover;
+    background-position: middle;
+    height: 500px;
+}
+
+h1, h2, h3{
+    font-family: 'Prompt', sans-serif;
+}
+
+h1{
+    font-size: 25px;
+}
+
+p{
+    text-indent: 3em;
+}
+
+img{
+    border-radius: 10px;
+    margin: 20px 0px;
+}
+
+.content{
+    padding: 30px;
+    max-width: 740px;
+    margin: auto;
+}
+
+.content-header{
+    padding: 20px 0px;
+}
+
+.content h2,
+.content h3{
+    margin-top: 30px;
+}
