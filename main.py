@@ -35,7 +35,7 @@ def plotgraph(dataframe, name, chart_title, graph_type, x_axis_title, y_axis_tit
     col_item = dataframe[dataframe.columns[0]]
     # checking type of graph
     if graph_type == "line":
-        chart = pygal.Line(x_title=x_axis_title, y_title=y_axis_title)
+        chart = pygal.StackedLine(fill=True, interpolate='cubic', style=pygal.style.DefaultStyle, x_title=x_axis_title, y_title=y_axis_title)
     elif graph_type == "bar":
         chart = pygal.Bar(x_title=x_axis_title, y_title=y_axis_title)
     elif graph_type == "pie":
