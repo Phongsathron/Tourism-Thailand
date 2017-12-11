@@ -21,11 +21,11 @@ def plotgraph(dataframe, name, chart_title, graph_type, x_axis_title, y_axis_tit
         Parameter
             data = dataframe in format
                  ------------------------------------------------------
-                | data_index |     2550    |    ....     |     2559    |
+                | data_index |     2550    |     ....    |     2559    |
                 |------------|-------------|-------------|-------------|
-                |  some_text | <int,float> |    ....     | <int,float> |
-                |    ....    |    ....     |    ....     |    ....     |
-                |  some_text | <int,float> | <int,float> | <int,float> |
+                |  some_text | <int,float> |     ....    | <int,float> |
+                |    ....    |    ....     |     ....    |    ....     |
+                |  some_text | <int,float> |     ....    | <int,float> |
                  ------------------------------------------------------
             name = name of export svg ex. europe.svg
             chart_title = title of that chart
@@ -33,11 +33,18 @@ def plotgraph(dataframe, name, chart_title, graph_type, x_axis_title, y_axis_tit
     """
     year_list = dataframe.loc[0].index.values[1:].tolist()
     col_item = dataframe[dataframe.columns[0]]
+    custom_style = pygal.style.Style(
+        background='transparent',
+        plot_background='transparent',
+    )
     # checking type of graph
     if graph_type == "line":
-        chart = pygal.Line(x_title=x_axis_title, y_title=y_axis_title)
+        chart_show_legend = len(col_item) > 1
+        chart = pygal.Line(show_legend=chart_show_legend,
+                           x_title=x_axis_title, y_title=y_axis_title, style=custom_style)
     elif graph_type == "bar":
-        chart = pygal.Bar(x_title=x_axis_title, y_title=y_axis_title)
+        chart = pygal.Bar(legend_at_bottom=True, x_title=x_axis_title,
+                          y_title=y_axis_title, style=custom_style)
     elif graph_type == "pie":
         chart == pygal.Pie()
     #Set Chart Title
@@ -64,7 +71,7 @@ def main():
     for continent in range(len(files)):
         dataframe = csv_to_dataframe(files[continent])
         name = list_continent[continent]
-        title = 'Statistics from '+ list_continent[continent]+ " to Thailand in 2550 - 2559."
+        title = 'สถิตินักท่องเที่ยวจาก '+ list_continent[continent]+ " เดินทางเข้าประเทศไทยในปี พ.ศ. 2550 - 2559."
         continent_values[list_continent[continent]] = dataframe.sum().tolist()[1:]
         plotgraph(dataframe, name, title, "line", x_title, y_title)
 
@@ -81,16 +88,21 @@ def main():
 
     """ Plotgraph tourist info """
     files = [filename.strip("\n\r") for filename in open("dataset/tourist_info/file.txt")]
+    title_list = ['สถิตินักท่องเที่ยวจำแนกตามช่วงอายุของเดินทางเข้าประเทศไทยในปี 2550-2559', \
+                  'สถิตินักท่องเที่ยวจำแนกตามเพศที่เดินทางเข้าประเทศไทยในปี 2550-2559', \
+                  'สถิตินักท่องเที่ยวจำแนกตามจำนวนครั้งการเดินทางเข้าประเทศไทยในปี 2550-2559', \
+                  'สถิตินักท่องเที่ยวจำแนกตามประเภทของการเดินทางในปี 2550-2559', \
+                  'สถิติรายได้จากการท่องเที่ยวเฉลี่ยต่อคนในหนึ่งวันในปี 2550-2559', \
+                  'สถิติรายได้จากการท่องเที่ยวในแต่ละปีตั้งแต่ 2550-2559']
     for i in range(len(files)):
         file_name = files[i]
         dataframe = csv_to_dataframe("dataset/tourist_info/"+file_name)
         name = file_name[:file_name.find(".")]
-        title = 'Statistics about '+ name + " to Thailand in 2550 - 2559."
         y_title='จำนวนนักท่องเที่ยว(คน)'
         x_title='ปีพ.ศ.'
         if i == 4:
             y_title='จำนวนเงิน(บาท)'
         if i == 5:
             y_title='จำนวนเงิน(ล้านบาท)'
-        plotgraph(dataframe, name, title, "bar", x_title, y_title)
+        plotgraph(dataframe, name, title_list[i], "bar", x_title, y_title)
 main()
