@@ -40,7 +40,7 @@ def plotgraph(dataframe, name, chart_title, graph_type, x_axis_title, y_axis_tit
     chart_show_legend = len(col_item) > 1
     # checking type of graph
     if graph_type == "line":
-        chart = pygal.StackedLine(fill=True, show_legend=chart_show_legend,
+        chart = pygal.Line(show_legend=chart_show_legend,
                            x_title=x_axis_title, y_title=y_axis_title, style=custom_style)
     elif graph_type == "bar":
         chart = pygal.Bar(show_legend=chart_show_legend, legend_at_bottom=True, x_title=x_axis_title,
