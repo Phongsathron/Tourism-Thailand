@@ -33,11 +33,18 @@ def plotgraph(dataframe, name, chart_title, graph_type, x_axis_title, y_axis_tit
     """
     year_list = dataframe.loc[0].index.values[1:].tolist()
     col_item = dataframe[dataframe.columns[0]]
+    custom_style = pygal.style.Style(
+        background='transparent',
+        plot_background='transparent',
+    )
     # checking type of graph
     if graph_type == "line":
-        chart = pygal.Line(x_title=x_axis_title, y_title=y_axis_title)
+        chart_show_legend = len(col_item) > 1
+        chart = pygal.Line(show_legend=chart_show_legend,
+                           x_title=x_axis_title, y_title=y_axis_title, style=custom_style)
     elif graph_type == "bar":
-        chart = pygal.Bar(x_title=x_axis_title, y_title=y_axis_title)
+        chart = pygal.Bar(legend_at_bottom=True, x_title=x_axis_title,
+                          y_title=y_axis_title, style=custom_style)
     elif graph_type == "pie":
         chart == pygal.Pie()
     #Set Chart Title
