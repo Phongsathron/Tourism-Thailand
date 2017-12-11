@@ -1,0 +1,6 @@
+Tourist_by_age.xlsx
+Tourist_by_sex.xlsx
+Tourist_by _traveled.xlsx
+Tourist_travel_type.xlsx
+Tourist_paid_per_day.xlsx
+Tourist_receive_per_years.xlsx
