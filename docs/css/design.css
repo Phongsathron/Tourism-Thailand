@@ -72,3 +72,22 @@ img{
 .ref{
     font-weight: bold;
 }
+
+.navbar{
+    background: #FFFFFF;
+    border-bottom: 1px solid #E0E0E0;
+    font-family: 'Kanit', sans-serif;
+}
+
+.navbar a{
+    color: #000000;
+}
+
+.navbar a.nav-link{
+    color: #0097A7;
+}
+
+.img-header{
+    border-radius: 0px;
+    margin: 0px;
+}
