@@ -64,7 +64,7 @@ def main():
     for continent in range(len(files)):
         dataframe = csv_to_dataframe(files[continent])
         name = list_continent[continent]
-        title = 'Statistics from '+ list_continent[continent]+ " to Thailand in 2550 - 2559."
+        title = 'สถิตินักท่องเที่ยวจาก '+ list_continent[continent]+ " เดินทางเข้าประเทศไทยในปี พ.ศ. 2550 - 2559."
         continent_values[list_continent[continent]] = dataframe.sum().tolist()[1:]
         plotgraph(dataframe, name, title, "line", x_title, y_title)
 
