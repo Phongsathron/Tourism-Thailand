@@ -18,7 +18,12 @@ p{
 
 img{
     border-radius: 10px;
-    margin: 20px 0px;
+    margin: 20px auto;
+    display: block;
+}
+
+.img-fluid{
+    max-width: 850px;
 }
 
 .content{
@@ -57,9 +62,13 @@ img{
     margin: auto;
 }
 
+.embed-responsive{
+    max-width: 750px;
+    margin: 20px auto;
+}
+
 .chart{
     max-width: 900px;
-    margin: 20px auto;
 }
 
 .ref{
