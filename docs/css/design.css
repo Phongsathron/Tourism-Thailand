@@ -4,13 +4,6 @@ body{
     line-height: 2;
 }
 
-.header{
-    background-image: url(../pexels-photo-415708.jpeg);
-    background-size: cover;
-    background-position: middle;
-    height: 500px;
-}
-
 h1, h2, h3{
     font-family: 'Kanit', sans-serif;
 }
