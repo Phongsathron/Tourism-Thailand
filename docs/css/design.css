@@ -103,3 +103,34 @@ img{
     border-radius: 0px;
     margin: 0px;
 }
+
+.card{
+    background: #FFFFFF;
+    border-radius: 3px;
+    padding: 10px 30px;
+    margin: 10px;
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.13)
+}
+
+.profile{
+    text-align: center;
+}
+
+.profile-picture{
+    width: 100%;
+    border-radius: 50%;
+}
+
+.profile-content h1{
+    max-width: inherit;
+    text-align: center;
+}
+
+.profile .btn{
+    margin: 5px 10px;
+}
+
+.profile b{
+    font-family: 'Kanit', sans-serif;
+    font-size: 20px;
+}
