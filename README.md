@@ -3,6 +3,5 @@
 สามารถอ่านการวิเคราะห์ของเราได้ที่ [https://phongsathron.github.io/Tourism-Thailand/](https://phongsathron.github.io/Tourism-Thailand/)
 
 # Library
-- Numpy
 - Pandas
 - Pygal
