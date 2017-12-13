@@ -4,9 +4,9 @@
 import pandas as pd
 import pygal
 
-def csv_to_dataframe(filename):
+def excel_to_dataframe(filename):
     """
-        ::: CSV to Dataframe Function :::
+        ::: excel to Dataframe Function :::
     Parameter
         filename = read excel file and return to dataframe
     """
@@ -69,7 +69,7 @@ def main():
     list_year = [i for i in range(start_year, end_year)]
     continent_values = {}
     for continent in range(len(files)):
-        dataframe = csv_to_dataframe(files[continent])
+        dataframe = excel_to_dataframe(files[continent])
         name = list_continent[continent]
         title = 'สถิตินักท่องเที่ยวจาก '+ list_continent[continent]+ " เดินทางเข้าประเทศไทยในปี พ.ศ. 2550 - 2559."
         continent_values[list_continent[continent]] = dataframe.sum().tolist()[1:]
@@ -96,7 +96,7 @@ def main():
                   'สถิติรายได้จากการท่องเที่ยวในแต่ละปีตั้งแต่ 2550-2559']
     for i in range(len(files)):
         file_name = files[i]
-        dataframe = csv_to_dataframe("dataset/tourist_info/"+file_name)
+        dataframe = excel_to_dataframe("dataset/tourist_info/"+file_name)
         name = file_name[:file_name.find(".")]
         y_title='จำนวนนักท่องเที่ยว(คน)'
         x_title='ปีพ.ศ.'
